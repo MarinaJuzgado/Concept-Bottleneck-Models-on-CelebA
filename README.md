@@ -56,9 +56,11 @@ The experiments demonstrate that concept-based models can approach baseline pred
 ---
 
 ## Dataset Preparation
-
-The dataset is loaded from a local copy of CelebA stored in Google Drive to speed up Colab training. The following files are required inside a `celeba/` directory on your Drive:
-
+ 
+The dataset is loaded via `torchvision.datasets.CelebA`, which handles the official train/validation/test splits automatically.
+ 
+**Option A — From Google Drive (recommended):** To speed up training, copy the CelebA files from your Drive to Colab's local storage before loading. This avoids reading thousands of images directly over the Drive connection. The following files are required inside a `celeba/` directory on your Drive:
+ 
 ```
 list_attr_celeba.txt
 list_eval_partition.txt
@@ -67,8 +69,10 @@ list_bbox_celeba.txt
 list_landmarks_align_celeba.txt
 img_align_celeba.zip
 ```
-
-These are copied to Colab's local storage and loaded using `torchvision.datasets.CelebA` with `download=False`. See the notebook for the full setup cell.
+ 
+**Option B — Direct download via torchvision:** If you don't have the dataset locally, `torchvision.datasets.CelebA` supports `download=True`, which fetches the files directly from the source. This is slower but requires no manual setup.
+ 
+See the notebook for the full dataset setup cell.
 
 ---
 
